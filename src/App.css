@@ -1,0 +1,138 @@
+/* Define color variables for easy management */
+:root {
+  --primary-color: #4A90E2; /* Sky Blue */
+  --secondary-color: #50E3C2; /* Turquoise */
+  --accent-color: #FFFFFF; /* Pure White */
+  --background-gradient: linear-gradient(to bottom right, #E3F2FD, #BBDEFB); /* Light gradient */
+  --background-pattern: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect width="100%" height="100%" fill="none"/><circle cx="25" cy="25" r="10" fill="%23E3F2FD" opacity="0.2"/><circle cx="75" cy="75" r="10" fill="%23BBDEFB" opacity="0.2"/></svg>'); /* Subtle pattern */
+  --background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white for card backgrounds */
+  --text-color: #333333; /* Dark Gray */
+  --button-background: #4A90E2; /* Sky Blue */
+  --button-background-hover: #357ABD; /* Darker Blue */
+  --border-color: #E0E0E0; /* Light Gray */
+}
+
+/* General app styling */
+.app {
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+  padding: 20px;
+  background: var(--background-gradient), var(--background-pattern); /* Combined gradient and pattern */
+  background-blend-mode: overlay; /* Blend gradient and pattern */
+  color: var(--text-color);
+}
+
+/* Flashcard container styling */
+.flashcard-container {
+  margin: 20px auto;
+  width: 350px; /* Increased width for better proportions */
+}
+
+/* Flashcard styling */
+.flashcard {
+  width: 100%;
+  height: 250px; /* Increased height for better readability */
+  margin: 0 auto;
+  padding: 20px;
+  border: none; /* Remove border for a cleaner look */
+  border-radius: 15px; /* Rounded corners */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Softer and deeper shadow */
+  background: var(--background-color); /* Semi-transparent background */
+  position: relative;
+  perspective: 1000px;
+  overflow: hidden; /* Ensure content fits within rounded corners */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.6s, box-shadow 0.3s; /* Smooth transitions */
+}
+
+.flashcard:hover {
+  transform: scale(1.05); /* Slightly enlarge on hover */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+.flashcard.flipped .front {
+  transform: rotateY(180deg);
+}
+
+.flashcard.flipped .back {
+  transform: rotateY(0);
+}
+
+.flashcard .front,
+.flashcard .back {
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  position: absolute;
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px; /* Rounded corners */
+  background: var(--accent-color);
+}
+
+.flashcard .back {
+  background: var(--secondary-color);
+  transform: rotateY(180deg);
+}
+
+/* Button styling */
+button {
+  margin: 10px;
+  padding: 10px 20px;
+  background: var(--button-background);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px; /* Larger font size */
+  transition: background 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background: var(--button-background-hover);
+  transform: scale(1.05);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+/* Dashboard styling */
+.dashboard {
+  margin-top: 40px;
+  text-align: left;
+}
+
+.dashboard form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.dashboard input,
+.dashboard textarea {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid var(--border-color);
+  background: #FFFFFF; /* White background for inputs */
+  color: var(--text-color);
+}
+
+.dashboard ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.dashboard li {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid var(--border-color);
+  background: #F9F9F9; /* Light background for list items */
+}
